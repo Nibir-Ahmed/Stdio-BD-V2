@@ -1,0 +1,585 @@
+/* ==============================================
+   GOOGLE FONTS
+   ============================================== */
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap');
+
+/* ==============================================
+   GLOBAL RESET & BASE STYLES
+   ============================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Google Sans', 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #f2f8f5 !important;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(52, 211, 153, 0.07) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(31, 122, 77, 0.06) 0%, transparent 50%);
+    color: #1a2e24;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    min-height: 100vh;
+    position: relative;
+    padding-top: 76px;
+}
+
+/* Faint blueprint grid + ambient green glow behind everything */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-image:
+        linear-gradient(rgba(31, 122, 77, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31, 122, 77, 0.06) 1px, transparent 1px);
+    background-size: 42px 42px;
+    pointer-events: none;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: -10%;
+    left: 50%;
+    width: 80vw;
+    height: 80vw;
+    transform: translateX(-50%);
+    background: radial-gradient(circle, rgba(52, 211, 153, 0.10), transparent 65%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* ==============================================
+   TYPOGRAPHY - BOLD TEXT
+   ============================================== */
+p, span, li, .card-text, .lead, .small, .nav-link, .btn, .text-muted {
+    font-weight: 600 !important;
+}
+
+/* Headings - Extra Bold */
+h1, h2, h3, h4, h5, h6, .fw-bold, .card-title, .display-5, .display-6 {
+    font-weight: 700 !important;
+    letter-spacing: -0.02em;
+    color: #0d2b1e;
+}
+
+/* ==============================================
+   GRADIENT HIGHLIGHT FOR HEADINGS
+   ============================================== */
+.display-6, 
+h1.fw-bold.display-6 {
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6, #06b6d4);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: 800 !important;
+}
+
+/* Technical Skills Section Heading Highlight */
+.text-muted[style*="color:black"] {
+    background: linear-gradient(135deg, #0f172a, #2563eb);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent !important;
+    font-weight: 800 !important;
+}
+
+/* Eyebrow labels */
+span.text-muted {
+    display: inline-block;
+    font-family: 'Google Sans', 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #34d399 !important;
+    margin-bottom: 0.5rem;
+}
+
+/* ==============================================
+   FIXED NAVBAR - TRANSPARENT WITH GLASS EFFECT
+   ============================================== */
+.navbar {
+    box-shadow: none !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1050;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(52, 211, 153, 0.15) !important;
+    transition: all 0.3s ease;
+}
+
+/* Add padding to body to prevent content from hiding under fixed navbar */
+body {
+    padding-top: 76px;
+}
+
+/* Adjust padding for mobile screens */
+@media (max-width: 768px) {
+    body {
+        padding-top: 68px;
+    }
+}
+
+/* Navbar Brand / Logo */
+.navbar-brand {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: #0d2b1e !important;
+}
+
+.navbar-brand::before {
+    content: "";
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: #34d399;
+    box-shadow: 0 0 12px 2px rgba(52, 211, 153, 0.5);
+}
+
+/* Navbar Links Container */
+.navbar-nav {
+    gap: 0.25rem;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 600;
+    color: #1a2e24 !important;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+}
+
+/* Navbar Link Hover - Pop Up Effect */
+.navbar-nav .nav-link:hover {
+    color: #1f7a4d !important;
+    transform: translateY(-2px);
+    background-color: rgba(52, 211, 153, 0.08);
+}
+
+/* Active Link Styling */
+.navbar-nav .nav-link.active {
+    color: #1f7a4d !important;
+    font-weight: 700 !important;
+    background-color: rgba(52, 211, 153, 0.1);
+}
+
+/* Underline Effect on Hover (Desktop only) */
+@media (min-width: 992px) {
+    .navbar-nav .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0%;
+        height: 2px;
+        background: #34d399;
+        transition: width 0.3s ease;
+        border-radius: 2px;
+    }
+
+    .navbar-nav .nav-link:hover::after {
+        width: 60%;
+    }
+
+    .navbar-nav .nav-link.active::after {
+        width: 60%;
+        background: #34d399;
+    }
+}
+
+/* Navbar Toggler Button - Mobile Menu */
+.navbar-toggler {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: none;
+    border-radius: 8px;
+    border: 1px solid rgba(52, 211, 153, 0.2);
+    box-shadow: none !important;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none !important;
+    outline: none;
+}
+
+.navbar-toggler:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.02);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* ==============================================
+   MOBILE NAVBAR STYLES (Collapsed Menu)
+   ============================================== */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background: rgba(255, 255, 255, 0.70) !important;
+        backdrop-filter: blur(20px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+        border-radius: 16px;
+        margin-top: 12px;
+        padding: 16px 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(52, 211, 153, 0.15);
+    }
+    
+    .navbar-nav {
+        gap: 0.5rem;
+        width: 100%;
+    }
+    
+    .navbar-nav .nav-item {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .navbar-nav .nav-link {
+        display: block;
+        padding: 10px 16px;
+        font-size: 1rem;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+    }
+    
+    .navbar-nav .nav-link:hover {
+        transform: translateX(5px);
+        background-color: rgba(52, 211, 153, 0.08);
+    }
+    
+    .navbar-nav .nav-link.active {
+        background: rgba(52, 211, 153, 0.12);
+        color: #1f7a4d !important;
+    }
+    
+    /* Remove underline on mobile */
+    .navbar-nav .nav-link::after {
+        display: none;
+    }
+}
+
+/* ==============================================
+   IMAGE BORDER RADIUS
+   ============================================== */
+img,
+.img-fluid,
+.rounded-circle,
+.ratio img,
+.card img {
+    border-radius: 16px !important;
+}
+
+/* Profile Image - Perfect Circle */
+.rounded-circle {
+    border-radius: 50% !important;
+    border: 3px solid white;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+/* ==============================================
+   CARD STYLES WITH BETTER HOVER
+   ============================================== */
+.card {
+    background: rgba(255, 255, 255, 0.50) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(52, 211, 153, 0.18) !important;
+    border-radius: 20px !important;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+/* Card Hover - Pop Up Effect */
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15);
+}
+
+/* Ratio 16:9 Border Radius */
+.ratio-16x9 {
+    border-radius: 20px 20px 0 0 !important;
+    overflow: hidden;
+}
+
+.card-body.bg-dark {
+    background: rgba(13, 24, 18, 0.85) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* ==============================================
+   SKILL CARDS & BG LIGHT STYLES
+   ============================================== */
+.bg-light.rounded-3 {
+    background: rgba(255, 255, 255, 0.40) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(52, 211, 153, 0.10);
+    border-radius: 16px !important;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+/* Skill Card Hover - Pop Up Effect */
+.bg-light.rounded-3:hover {
+    background: rgba(255, 255, 255, 0.60) !important;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.12);
+}
+
+/* ==============================================
+   CAROUSEL CONTROLS - NO SHADOW
+   ============================================== */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    border-radius: 50%;
+    background-color: #1e293b;
+    width: 40px;
+    height: 40px;
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+/* Carousel Controls Hover - Pop Up */
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    background-color: #1f7a4d;
+    transform: scale(1.1);
+}
+
+.carousel-indicators button {
+    box-shadow: none;
+    border-radius: 50%;
+    width: 10px !important;
+    height: 10px !important;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicators button.active {
+    background-color: #1f7a4d !important;
+    transform: scale(1.3);
+}
+
+/* ==============================================
+   SOCIAL MEDIA ICON HOVER - POP UP EFFECT
+   ============================================== */
+.d-flex.gap-3 a {
+    transition: all 0.3s ease;
+}
+
+.d-flex.gap-3 a:hover {
+    transform: translateY(-4px) scale(1.05);
+    background-color: rgba(52, 211, 153, 0.1) !important;
+}
+
+/* ==============================================
+   BUTTON STYLES
+   ============================================== */
+.btn {
+    font-weight: 600;
+    border-radius: 40px;
+    transition: all 0.3s ease;
+}
+
+/* Button Hover - Pop Up Effect */
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Primary Button */
+.btn-primary {
+    background: #1f7a4d;
+    border: none;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #0f3d24;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(31, 122, 77, 0.3);
+}
+
+/* ==============================================
+   FOOTER STYLES - TRANSPARENT
+   ============================================== */
+footer {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none;
+    border-top: 1px solid rgba(52, 211, 153, 0.10) !important;
+}
+
+/* Footer Link Hover - Pop Up & Slide Effect */
+footer a {
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+footer a:hover {
+    color: #1f7a4d !important;
+    transform: translateX(5px);
+}
+
+/* Footer List Items */
+footer ul li a {
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+footer ul li a:hover {
+    color: #1f7a4d !important;
+    transform: translateX(6px);
+}
+
+/* Footer Social Buttons Hover */
+footer .btn-outline-secondary {
+    transition: all 0.3s ease;
+}
+
+footer .btn-outline-secondary:hover {
+    background-color: #1f7a4d !important;
+    border-color: #1f7a4d !important;
+    color: white !important;
+    transform: translateY(-4px) scale(1.05);
+}
+
+/* Footer Border Top */
+footer.border-top {
+    border-top: 1px solid rgba(52, 211, 153, 0.10) !important;
+}
+
+/* ==============================================
+   RESPONSIVE STYLES
+   ============================================== */
+@media (max-width: 768px) {
+    .display-6 {
+        font-size: 1.8rem;
+    }
+    
+    footer .row {
+        text-align: center;
+    }
+    
+    footer ul {
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Card hover on mobile - reduce effect */
+    .card:hover {
+        transform: translateY(-4px);
+    }
+    
+    .bg-light.rounded-3:hover {
+        transform: translateY(-3px);
+    }
+}
+
+@media (max-width: 576px) {
+    /* Smaller screens */
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    
+    .display-5 {
+        font-size: 1.8rem;
+    }
+    
+    .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+/* ==============================================
+   UTILITY CLASSES
+   ============================================== */
+.text-primary {
+    color: #1f7a4d !important;
+}
+
+.bg-dark-custom {
+    background-color: #0f172a !important;
+}
+
+.shadow-sm-custom {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Remove Shadow from Specific Elements */
+.navbar,
+.carousel,
+.carousel-control-prev-icon,
+.carousel-control-next-icon,
+.carousel-indicators button {
+    box-shadow: none !important;
+}
+
+/* Section Spacing */
+section {
+    position: relative;
+    background: transparent !important;
+}
+
+/* Paragraph Line Height */
+.lead {
+    line-height: 1.7;
+    color: #2b4a3a;
+}
+
+/* Image Hover Zoom Effect */
+img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.02);
+}
+
+/* Gallery Image Container */
+.gallery-img {
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.gallery-img img {
+    transition: transform 0.4s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-img:hover img {
+    transform: scale(1.05);
+}
+
+/* Override bg classes */
+.bg-white {
+    background: transparent !important;
+}
+
+.bg-light {
+    background: transparent !important;
+}
